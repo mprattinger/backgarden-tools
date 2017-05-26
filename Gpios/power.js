@@ -23,12 +23,13 @@ class Power {
     }
 
     on() {
+        var that = this;
         return new Promise((resolve, reject) => {
-            if (!this.isOn) {
-                this.io.write(1, (err) => {
-                    if (err) reject("Error writing on to pin " + this.pin);
+            if (!that.isOn) {
+                that.io.write(1, (err) => {
+                    if (err) reject("Error writing on to pin " + that.pin);
                     else {
-                        this.isOn = true;
+                        that.isOn = true;
                         resolve();
                     }
                 });
@@ -39,12 +40,13 @@ class Power {
     }
 
     off() {
+        var that = this;
         return new Promise((resolve, reject) => {
-            if (this.isOn) {
-                this.io.write(0, (err) => {
-                    if (err) reject("Error writing off to pin " + this.pin);
+            if (that.isOn) {
+                that.io.write(0, (err) => {
+                    if (err) reject("Error writing off to pin " + that.pin);
                     else {
-                        this.isOn = false;
+                        that.isOn = false;
                         resolve();
                     }
                 });
