@@ -5,6 +5,7 @@ var TropferClass = require("./Gpios/tropfer");
 var SprinklerClass = require("./Gpios/sprinkler");
 var LampClass = require("./Gpios/lamp");
 var configM = require("./configure");
+var powerM = require("./Gpios/power");
 
 var opt = require("node-getopt").create([
     ["", "on", "Einschalten"],
@@ -23,6 +24,7 @@ var werfer = new WerferClass(config);
 var tropfer = new TropferClass(config);
 var sprinkler = new SprinklerClass(config);
 var lamp = new LampClass(config);
+var power = powerM.getInstance(config);
 
 if(opt.options.werfer){
     if(opt.options.on){
@@ -75,6 +77,24 @@ if(opt.options.lamp){
         console.log("Lampe ausschalten");
         lamp.off().then(()=>{
             console.log("Lampe ist aus");
+        }).catch((err)=>{
+            console.log(err);
+        });
+    }
+}
+
+if(opt.options.power){
+    if(opt.options.on){
+        console.log("Trafo einschalten");
+        power.on().then(()=>{
+            console.log("Trafo ist ein");
+        }).catch((err)=>{
+            console.log(err);
+        });
+    }else{
+        console.log("Trafo ausschalten");
+        power.off().then(()=>{
+            console.log("Trafo ist aus");
         }).catch((err)=>{
             console.log(err);
         });
