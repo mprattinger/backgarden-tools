@@ -20,13 +20,8 @@ var opt = require("node-getopt").create([
 var config = new configM();
 config.runConfiguration();
 
-var werfer = new WerferClass(config);
-var tropfer = new TropferClass(config);
-var sprinkler = new SprinklerClass(config);
-var lamp = new LampClass(config);
-var power = powerM.getInstance(config);
-
 if(opt.options.werfer){
+    var werfer = new WerferClass(config);
     if(opt.options.on){
         console.log("Werfer einschalten");
         werfer.on().then(()=>{
@@ -40,6 +35,7 @@ if(opt.options.werfer){
 }
 
 if(opt.options.sprinkler){
+    var sprinkler = new SprinklerClass(config);    
     if(opt.options.on){
         console.log("Sprinkler einschalten");
         sprinkler.on().then(()=>{
@@ -53,6 +49,7 @@ if(opt.options.sprinkler){
 }
 
 if(opt.options.tropfer){
+    var tropfer = new TropferClass(config);
     if(opt.options.on){
         console.log("Tropfer einschalten");
         tropfer.on().then(()=>{
@@ -66,6 +63,7 @@ if(opt.options.tropfer){
 }
 
 if(opt.options.lamp){
+    var lamp = new LampClass(config);
     if(opt.options.on){
         console.log("Lampe einschalten");
         lamp.on().then(()=>{
@@ -84,6 +82,7 @@ if(opt.options.lamp){
 }
 
 if(opt.options.power){
+    var power = powerM.getInstance(config);
     if(opt.options.on){
         console.log("Trafo einschalten");
         power.on().then(()=>{
