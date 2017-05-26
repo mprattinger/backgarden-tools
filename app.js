@@ -12,7 +12,8 @@ var opt = require("node-getopt").create([
     ["w", "werfer", "Werfer"],
     ["s", "sprinkler", "Sprinkler"],
     ["t", "tropfer", "Tropfer"],
-    ["l", "lamp", "Lampe einschalten"]
+    ["l", "lamp", "Lampe einschalten"],
+    ["p", "power", "Trafo einschalten"]
 ]).bindHelp().parseSystem();
 
 var config = new configM();
