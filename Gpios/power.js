@@ -29,6 +29,7 @@ class Power {
                 that.io.write(1, (err) => {
                     if (err) reject("Error writing on to pin " + that.pin);
                     else {
+			console.log("Power is on");
                         that.isOn = true;
                         resolve();
                     }
