@@ -11,7 +11,7 @@ class Gpio {
         this.config = config;
         this.requirePower = requirePower;
         
-        console.log("Requires power?: " + requirePower);
+        console.log("Requires power? (" + configName + "): " + requirePower);
 
         if (os.platform() == "linux") {
             this.onoff = require("onoff").Gpio;
