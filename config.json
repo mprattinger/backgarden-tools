@@ -1,0 +1,12 @@
+{
+    "werferPin": 12,
+    "sprinklerPin": 23,
+    "tropferPin": 24,
+    "button-light": 8,
+    "power-on": 7,
+    "lampPin": 8,
+    "waterlevel": 4,
+    "pumpPin": 2,
+    "buttonPin": 3,
+    "valvePin": 25
+}
