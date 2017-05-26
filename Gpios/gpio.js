@@ -5,11 +5,13 @@ var power = require("./power");
 
 class Gpio {
 
-    constructor(configName, mode, config, requirePower=false) {
+    constructor(configName, mode, config, requirePower = false) {
         this.configName = configName;
         this.mode = mode;
         this.config = config;
         this.requirePower = requirePower;
+        
+        console.log("Requires power?: " + requirePower);
 
         if (os.platform() == "linux") {
             this.onoff = require("onoff").Gpio;
@@ -29,25 +31,28 @@ class Gpio {
     }
 
     on() {
-        if(this.requirePower){
-            return this.setPower(true).then(this.setGpio(true));
+        var that = this;
+        if (that.requirePower) {
+            return that.setPower(true).then(that.setGpio(true));
         } else {
-            return this.setGpio(true);
+            return that.setGpio(true);
         }
     }
 
     off() {
-        if(this.requirePower){
-            return this.setPower(false).then(this.setGpio(false));
+        var that = this;
+        if (that.requirePower) {
+            return that.setPower(false).then(that.setGpio(false));
         } else {
-            return this.setGpio(false);
+            return that.setGpio(false);
         }
     }
 
     setGpio(onoff) {
+        var that = this;
         return new Promise((resolve, reject) => {
             if (onoff) {
-                this.io.write(1, (err) => {
+                that.io.write(1, (err) => {
                     if (err) reject("Error writing on to pin " + this.pin);
                     else {
                         this.isOn = true;
@@ -55,7 +60,7 @@ class Gpio {
                     }
                 });
             } else {
-                this.io.write(0, (err) => {
+                that.io.write(0, (err) => {
                     if (err) reject("Error writing off to pin " + this.pin);
                     else {
                         this.isOn = false;
@@ -67,15 +72,16 @@ class Gpio {
     }
 
     setPower(onoff) {
+        var that = this;
         return new Promise((resolve, reject) => {
             if (onoff) {
-                this.power.on().then(() => {
+                that.power.on().then(() => {
                     resolve();
                 }).catch((err) => {
                     reject(err);
                 });
             } else {
-                this.power.off().then(() => {
+                that.power.off().then(() => {
                     resolve();
                 }).catch((err) => {
                     reject(err);
