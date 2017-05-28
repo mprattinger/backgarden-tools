@@ -1,6 +1,6 @@
 {
-    "werferPin": 12,
-    "sprinklerPin": 23,
+    "werferPin": 23,
+    "sprinklerPin": 18,
     "tropferPin": 24,
     "button-light": 8,
     "power-on": 7,
