@@ -32,7 +32,8 @@ class Gpio {
 
     on() {
         var that = this;
-        if (that.requirePower) {
+        console.log(that.requirePower);
+	if (that.requirePower) {
             return that.setPower(true).then(that.setGpio(true));
         } else {
             return that.setGpio(true);
