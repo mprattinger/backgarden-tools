@@ -55,6 +55,7 @@ class Gpio {
                 that.io.write(1, (err) => {
                     if (err) reject("Error writing on to pin " + this.pin);
                     else {
+                        console.log("Written 1 to " + that.pin);
                         this.isOn = true;
                         resolve();
                     }
@@ -63,6 +64,7 @@ class Gpio {
                 that.io.write(0, (err) => {
                     if (err) reject("Error writing off to pin " + this.pin);
                     else {
+                        console.log("Written 0 to " + that.pin);
                         this.isOn = false;
                         resolve();
                     }

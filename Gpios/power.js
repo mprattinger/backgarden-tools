@@ -25,6 +25,7 @@ class Power {
     on() {
         var that = this;
         return new Promise((resolve, reject) => {
+            console.log("Written 1 to " + that.pin + " status is " + that.isOn);
             if (!that.isOn) {
                 that.io.write(1, (err) => {
                     if (err) reject("Error writing on to pin " + that.pin);
@@ -42,6 +43,7 @@ class Power {
     off() {
         var that = this;
         return new Promise((resolve, reject) => {
+            console.log("Written 1 to " + that.pin + " status is " + that.isOn);
             if (that.isOn) {
                 that.io.write(0, (err) => {
                     if (err) reject("Error writing off to pin " + that.pin);
