@@ -8,5 +8,6 @@
     "waterlevel": 4,
     "pumpPin": 2,
     "buttonPin": 3,
-    "valvePin": 25
+    "valvePin": 25,
+    "valveTransTime": 5000
 }

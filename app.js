@@ -17,6 +17,7 @@ var opt = require("node-getopt").create([
     ["t", "tropfer", "Tropfer"],
     ["l", "lamp", "Lampe einschalten"],
     ["p", "power", "Trafo einschalten"],
+    ["v", "valve", "On -> Ventil öffnet Pumpe, off -> Ventil öffnet wasserl"]
     ["d", "debug", "Debuggen"]
 ]).bindHelp().parseSystem();
 
